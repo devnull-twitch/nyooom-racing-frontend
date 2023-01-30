@@ -11,6 +11,9 @@
 # production
 /build
 
+# 3d model
+/src/models/trophy/nyooom_trophy-transformed.glb
+
 # misc
 .DS_Store
 .env.local
