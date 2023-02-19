@@ -26,7 +26,7 @@ import moment from 'moment';
 import { AdminEventUpdate } from './AdminEventUpdate';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080/'
+  baseURL: 'https://api.nyooom.racing/'
 });
 
 const sortAndMap = (input: string[]): number[] => {
