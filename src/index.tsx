@@ -47,7 +47,7 @@ const getRaceEventFromFormData = (formData: FormData): IRaceEventPayload => {
   return {
     name: (formData.get('eventname') || '').toString(),
     type: parseInt((formData.get('eventtype') || '1').toString()),
-    race_date_unix: moment().unix(),
+    race_date_unix: moment((formData.get('eventdate') || '').toString()).unix(),
     results: resultingIDs,
     starting_grid: startingIds
   };
