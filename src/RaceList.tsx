@@ -17,6 +17,7 @@ export const RaceList: FC = () => {
             <TableHead>
               <TableRow>
                 <TableCell width="40px">Event</TableCell>
+                <TableCell width="160px">Date</TableCell>
                 <TableCell width="30%">Type</TableCell>
               </TableRow>
             </TableHead>
