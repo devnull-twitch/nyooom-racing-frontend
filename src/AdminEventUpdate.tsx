@@ -10,6 +10,17 @@ export const AdminEventUpdate: FC = () => {
   const navigate = useNavigate();
   const [driverList, event] = useLoaderData() as [IDriver[], IRaceEvent];
 
+  const transformEventToPrefill = (event: IRaceEvent): IRaceEvent => {
+    const typeMapping: Record<string, string> = {
+      "Race": "1",
+      "Sprint": "2",
+      "Pre-Season race": "3",
+      "Pre-Season sprint": "4",
+    };
+    event.type = typeMapping[event.type];
+    return event
+  }
+
   useEffect(() => {
     if (username === '' && password === '') {
       navigate("/admin");
@@ -21,7 +32,7 @@ export const AdminEventUpdate: FC = () => {
       <Form method="post">
         <input type="hidden" name="username" value={username} />
         <input type="hidden" name="password" value={password} />
-        <EventForm driverList={driverList} event={event} />
+        <EventForm driverList={driverList} event={transformEventToPrefill(event)} />
         <Grid item pt={2}>
           <Button variant="outlined" type="submit">
             Update event
