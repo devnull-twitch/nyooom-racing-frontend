@@ -18,11 +18,7 @@ export const RaceResultRow: FC<RaceResultRowProps> = ({ result, startingPos }) =
           </Stack>
         </TableCell>
         <TableCell>
-          <Stack direction={'row'}>
-            <Typography>{startingPos}</Typography>
-            <Typography>&nbsp;🡆&nbsp;</Typography>
-            <Typography>{result.position}</Typography>
-          </Stack>
+          <Typography>{result.position}</Typography>
         </TableCell>
         <TableCell>
           <Typography>{result.points}</Typography>

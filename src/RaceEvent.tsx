@@ -30,7 +30,7 @@ export const RaceEvent: FC<RaceEventProps> = () => {
                 <TableHead>
                   <TableRow>
                     <TableCell>Driver</TableCell>
-                    <TableCell width="150px">Start / Finish</TableCell>
+                    <TableCell width="110px">Finish</TableCell>
                     <TableCell width="90px">Points</TableCell>
                   </TableRow>
                 </TableHead>
