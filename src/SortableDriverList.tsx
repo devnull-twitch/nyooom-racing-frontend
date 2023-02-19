@@ -39,6 +39,7 @@ export const SortableDriverList: FC<SortableDriverListProps> = ({ list, driverLi
           >
             <input type="hidden" name={fieldName} value={`${gridIndex}/${driverId}`} />
             <Stack direction="row" alignItems="center">
+              <Typography variant="unobtrusive">{gridIndex + 1}</Typography>
               <DragHandleIcon />
               <Typography variant="secondaryname" component="span">{driverObj!.name}</Typography>
             </Stack>
