@@ -1,37 +1,46 @@
-export interface DriverResult {
-    event_name: string;
-    position: number;
-    points: number;
-}
-
 export interface Driver {
-    image: string;
+    id?: number;
     name: string;
-    points: number;
-    results: DriverResult[];
+    image?: string;
+    points?: number;
 }
 
-export interface TeamResult {
+export interface Result {
     event_name: string;
-    driver: string;
-    position: number;
-    points: number;
+    driver_name: string;
+    driver_id?: number;
+    team_name?: string;
+    points?: number;
+    position?: number;
+}
+
+export interface RaceEvent {
+    id?: number;
+    name: string;
+    race_date_unix: number;
+    type: string;
+    starting_grid: Result[];
+    results: Result[];
+}
+
+export interface RaceEventPayload {
+    id?: number;
+    name: string;
+    race_date_unix: number;
+    type: number;
+    starting_grid: number[];
+    results: number[];
 }
 
 export interface Team {
-    image: string;
-    name: string;
-    points: number;
+    id?: number;
     drivers: Driver[];
-    results: TeamResult[];
+    name: string;
+    points?: number;
+    image?: string;
+    results?: Result[];
 }
 
 export interface Teams {
-    teams:  Team[];
-}
-
-export interface Race {
-    name: string;
-    give_points: boolean;
-    standings: string[];
+    teams: Team[];
 }

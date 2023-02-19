@@ -1,17 +1,20 @@
 import { createTheme } from "@mui/material";
+import React from "react";
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
     tinypoints: React.CSSProperties;
-    teamname: React.CSSProperties;
-    username: React.CSSProperties;
+    primaryname: React.CSSProperties;
+    secondaryname: React.CSSProperties;
+    unobtrusive: React.CSSProperties;
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
     tinypoints?: React.CSSProperties;
-    teamname?: React.CSSProperties;
-    username?: React.CSSProperties;
+    primaryname?: React.CSSProperties;
+    secondaryname?: React.CSSProperties;
+    unobtrusive?: React.CSSProperties;
   }
 }
 
@@ -19,8 +22,9 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     tinypoints: true;
-    teamname: true;
-    username: true;
+    primaryname: true;
+    secondaryname: true;
+    unobtrusive: true;
   }
 }
 
@@ -32,12 +36,18 @@ export const darkTheme = createTheme({
     tinypoints: {
       fontSize: '0.7rem',
     },
-    teamname: {
+    primaryname: {
       fontSize: '1.2rem',
     },
-    username: {
+    secondaryname: {
       fontSize: '0.9rem',
-    }
+    },
+    unobtrusive: {
+      textDecoration: 'none',
+      fontSize: '0.7rem',
+      color: 'gray',
+      cursor: 'pointer',
+    },
   }
 });
 
