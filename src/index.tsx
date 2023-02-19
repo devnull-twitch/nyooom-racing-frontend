@@ -43,7 +43,7 @@ const sortAndMap = (input: string[]): number[] => {
 const getRaceEventFromFormData = (formData: FormData): IRaceEventPayload => {
   const startingIds = sortAndMap(formData.getAll("eventstarting").map(entry => entry as string));
   const resultingIDs = sortAndMap(formData.getAll("eventresult").map(entry => entry as string));
-  debugger;
+  
   return {
     name: (formData.get('eventname') || '').toString(),
     type: parseInt((formData.get('eventtype') || '1').toString()),
