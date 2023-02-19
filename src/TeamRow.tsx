@@ -15,7 +15,7 @@ export const TeamRow: FC<TeamRowProps> = ({ pos, team }) => {
 
   return (
     <>
-      <TableRow onClick={onTeamRowSelect}>
+      <TableRow onClick={onTeamRowSelect} style={{ cursor: 'pointer' }}>
         <TableCell>#{pos}</TableCell>
         <TableCell sx={{ borderRight: ' 1px solid gray' }}>
           <Grid container justifyContent="flex-start">
