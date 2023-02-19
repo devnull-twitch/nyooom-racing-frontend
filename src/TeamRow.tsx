@@ -25,7 +25,7 @@ export const TeamRow: FC<TeamRowProps> = ({ pos, team }) => {
               </Avatar>
               <Stack>
                 <Typography variant="primaryname">{team.name}</Typography>
-                <Typography variant="tinypoints">{team.points || 0} points</Typography>
+                <Typography variant="tinypoints">{team.points || 0} points ( pre-season {team.pre_season_points || 0} )</Typography>
               </Stack>
             </Stack>
           </Grid>
@@ -39,14 +39,14 @@ export const TeamRow: FC<TeamRowProps> = ({ pos, team }) => {
                 </Avatar>
                 <Stack>
                   <Typography variant="secondaryname">{d.name}</Typography>
-                  <Typography variant="tinypoints">{d.points || 0} points</Typography>
+                  <Typography variant="tinypoints">{d.points || 0} points ( pre-season {d.pre_season_points || 0} )</Typography>
                 </Stack>
               </Stack>
             </Grid>
           </TableCell>
         ))}
       </TableRow>
-      {showDetails && team.results && team.results.map((r) => (
+      {showDetails && team.results && team.results.filter(r => (r.points || 0) > 0).map((r) => (
         <TableRow>
           <TableCell colSpan={2}>{r.event_name}</TableCell>
           <TableCell colSpan={2}>{r.driver_name} Scored {r.points} points coming in at position {r.position}</TableCell>

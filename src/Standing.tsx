@@ -12,6 +12,9 @@ export const Standing: FC = () => {
   const { teams } = useLoaderData() as Record<string, any>;
 
   const sortTeams = (a: ITeam, b: ITeam) => {
+    if ((b.points || 0) === (a.points || 0)) {
+      return (b.pre_season_points || 0) - (a.pre_season_points || 0);
+    }
     return (b.points || 0) - (a.points || 0);
   };
 
