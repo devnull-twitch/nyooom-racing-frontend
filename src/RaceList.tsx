@@ -9,6 +9,10 @@ import { LoaderFallback } from './LoaderFallback';
 export const RaceList: FC = () => {
   const { races } = useLoaderData() as Record<string, any>;
 
+  const sortEvents = (a: IRaceEvent, b: IRaceEvent) => {
+    return (b.race_date_unix || 0) - (a.race_date_unix || 0);
+  };
+  
   return (
     <Suspense fallback={<LoaderFallback />}>
       <Await resolve={races}>
@@ -22,7 +26,7 @@ export const RaceList: FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {resolvedRaces.data.map((r, index) => <RaceRow key={index} event={r} />)}  
+              {resolvedRaces.data.sort(sortEvents).map((r, index) => <RaceRow key={index} event={r} />)}  
             </TableBody>
           </Table>
         )}
