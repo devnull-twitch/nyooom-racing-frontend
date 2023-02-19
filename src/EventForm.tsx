@@ -69,7 +69,8 @@ export const EventForm: FC<EventFormProps> = ({ event, driverList }) => {
             <Select defaultValue={event?.type || 1} name="eventtype" id="event-type">
               <MenuItem value={1}>Race</MenuItem>
               <MenuItem value={2}>Sprint</MenuItem>
-              <MenuItem value={3}>Pre-Season</MenuItem>
+              <MenuItem value={3}>Pre-Season race</MenuItem>
+              <MenuItem value={4}>Pre-Season sprint</MenuItem>
             </Select>
           </FormControl>
         </Grid>
