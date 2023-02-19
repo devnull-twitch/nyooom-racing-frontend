@@ -49,7 +49,7 @@ export const AdminLogin: FC<AdminTeamCreateProps> = ({ axiosInstance }) => {
         <Grid item pt={3}>
           <FormControl>
             <InputLabel htmlFor="password">Password</InputLabel>
-            <Input id="password" value={password} onChange={(e) => {
+            <Input id="password" type="password" value={password} onChange={(e) => {
               setPassword(e.target.value);
             }} />
           </FormControl>
