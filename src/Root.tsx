@@ -48,8 +48,13 @@ export const Root : FC = () => {
                     </MenuItem>
                     <MenuItem>
                       <Typography component={'a'} onClick={() => {
+                        navigate("/drivers");
+                      }}>Drivers</Typography>
+                    </MenuItem>
+                    <MenuItem>
+                      <Typography component={'a'} onClick={() => {
                         navigate("/");
-                      }}>Standings</Typography>
+                      }}>Teams</Typography>
                     </MenuItem>
                   </MenuList>
                 </Toolbar>

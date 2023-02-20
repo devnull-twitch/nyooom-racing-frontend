@@ -24,6 +24,7 @@ import { Root } from './Root';
 import { AdminEventCreate } from './AdminEventCreate';
 import moment from 'moment';
 import { AdminEventUpdate } from './AdminEventUpdate';
+import { DriverList } from './DriverList';
 
 const axiosInstance = axios.create({
   baseURL: 'https://api.nyooom.racing/'
@@ -79,7 +80,7 @@ const router = createBrowserRouter([
         }
       },
       {
-        path: "/races",
+        path: "races",
         element: <RaceList />,
         loader: () => {
           return defer({
@@ -88,7 +89,7 @@ const router = createBrowserRouter([
         }
       },
       {
-        path: "/races/:raceId",
+        path: "races/:raceId",
         element: <RaceEvent />,
         loader: ({ params }) => {
           return defer({
@@ -97,7 +98,16 @@ const router = createBrowserRouter([
         }
       },
       {
-        path: "/admin",
+        path: "drivers",
+        element: <DriverList />,
+        loader: () => {
+          return defer({
+            teams: axiosInstance.get<ITeam[]>('/team'),
+          });
+        }
+      },
+      {
+        path: "admin",
         element: <AdminRoot />,
         children: [
           {
