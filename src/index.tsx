@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         index: true,
         path: "",
         element: <Standing />,
-        loader: async () => {
+        loader: () => {
           return defer({
             teams: axiosInstance.get<ITeam[]>('/team'),
           });
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
       {
         path: "/races",
         element: <RaceList />,
-        loader: async () => {
+        loader: () => {
           return defer({
             races: axiosInstance.get<IRaceEvent[]>('/race'),
           });
@@ -90,7 +90,7 @@ const router = createBrowserRouter([
       {
         path: "/races/:raceId",
         element: <RaceEvent />,
-        loader: async ({ params }) => {
+        loader: ({ params }) => {
           return defer({
             race: axiosInstance.get<IRaceEvent>(`race/${params.raceId}`)
           });

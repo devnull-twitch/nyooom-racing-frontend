@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { TableCell, TableRow, Typography } from "@mui/material";
 import { RaceEvent } from './data/interfaces';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
 interface RaceRowProps {

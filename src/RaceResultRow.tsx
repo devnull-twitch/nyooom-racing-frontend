@@ -4,10 +4,9 @@ import { Result as IResult } from './data/interfaces';
 
 interface RaceResultRowProps {
   result: IResult;
-  startingPos: number;
 };
 
-export const RaceResultRow: FC<RaceResultRowProps> = ({ result, startingPos }) => {
+export const RaceResultRow: FC<RaceResultRowProps> = ({ result }) => {
   return (
     <>
       <TableRow>

@@ -16,11 +16,6 @@ export const RaceEvent: FC<RaceEventProps> = () => {
     <Suspense fallback={<LoaderFallback />}>
       <Await resolve={race}>
         {(raceResponse: AxiosResponse<IRaceEvent>) => {
-          const startingMap: Map<string, number> = new Map<string, number>();
-          raceResponse.data.starting_grid.forEach(gridPos => {
-            startingMap.set(gridPos.driver_name, gridPos.position || 1);
-          });
-
           return (
             <>
               <Typography variant='h2'>{race.name}</Typography>
@@ -35,7 +30,7 @@ export const RaceEvent: FC<RaceEventProps> = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {raceResponse.data.results.map((r, index) => <RaceResultRow key={index} result={r} startingPos={startingMap.get(r.driver_name) || 0} />)}              
+                  {raceResponse.data.results.map((r, index) => <RaceResultRow key={index} result={r} />)}              
                 </TableBody>
               </Table>
             </>
