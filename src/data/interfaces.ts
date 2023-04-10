@@ -4,6 +4,8 @@ export interface Driver {
     image?: string;
     points?: number;
     pre_season_points?: number;
+    prev_points?: number;
+    prev_pre_season_points?: number;
 }
 
 export interface Result {
@@ -39,6 +41,8 @@ export interface Team {
     name: string;
     points?: number;
     pre_season_points?: number;
+    prev_points?: number;
+    prev_pre_season_points?: number;
     image?: string;
     results?: Result[];
 }

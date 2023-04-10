@@ -18,24 +18,43 @@ export const Standing: FC = () => {
     return (b.points || 0) - (a.points || 0);
   };
 
+  const sortTeamsByPrevPoints = (a: ITeam, b: ITeam) => {
+    if ((b.prev_points || 0) === (a.prev_points || 0)) {
+      return (b.prev_pre_season_points || 0) - (a.prev_pre_season_points || 0);
+    }
+    return (b.prev_points || 0) - (a.prev_points || 0);
+  };
+
   return (
     <Suspense fallback={<LoaderFallback />}>
       <Await resolve={teams}>
-        {(teamResponse: AxiosResponse<ITeam[]>) => (
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell width="40px">Pos</TableCell>
-                <TableCell width="30%">Team</TableCell>
-                <TableCell align="center">Driver #1</TableCell>
-                <TableCell align="center">Driver #2</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {teamResponse.data.sort(sortTeams).map((t, index) => <TeamRow key={index} team={t} pos={index + 1} />)}              
-            </TableBody>
-          </Table>
-        )}
+        {(teamResponse: AxiosResponse<ITeam[]>) => {
+          const currentTeamList = [...teamResponse.data].sort(sortTeams);
+          const prevTeamList = [...teamResponse.data].sort(sortTeamsByPrevPoints);
+
+          return (
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell width="40px">Pos</TableCell>
+                  <TableCell width="30%">Team</TableCell>
+                  <TableCell align="center">Driver #1</TableCell>
+                  <TableCell align="center">Driver #2</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {currentTeamList.map((t, index) => 
+                  <TeamRow 
+                    key={index}
+                    team={t}
+                    pos={index + 1}
+                    prevPos={prevTeamList.findIndex((checkTeam) => checkTeam.id === t.id) + 1}
+                  />
+                )}              
+              </TableBody>
+            </Table>
+          );
+        }}
       </Await>
     </Suspense>
   );
